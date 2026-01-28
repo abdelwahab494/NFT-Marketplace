@@ -1,15 +1,18 @@
 import 'package:project1/imports.dart';
 
 class CollectionsCard extends StatelessWidget {
-  const CollectionsCard({super.key, required this.item});
+  const CollectionsCard({super.key, required this.item, required this.endTime});
   final ItemsModel item;
+  final DateTime endTime;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(
-        context,
-      ).push(MaterialPageRoute(builder: (c) => CardDetailsScreen(item: item))),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (c) => CardDetailsScreen(item: item, endTime: endTime),
+        ),
+      ),
       child: Card.outlined(
         elevation: 2,
         color: AppColors.bg1,
@@ -65,14 +68,7 @@ class CollectionsCard extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(AppImages.clockIcon),
                                 Gap(5),
-                                Text(
-                                  "1h 23m 32s",
-                                  style: GoogleFonts.spaceGrotesk(
-                                    color: AppColors.text1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
+                                CountdownTimer(endTime: endTime),
                               ],
                             ),
                           ],

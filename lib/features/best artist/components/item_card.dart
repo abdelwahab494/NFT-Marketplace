@@ -7,9 +7,14 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.of(
-        context,
-      ).push(MaterialPageRoute(builder: (c) => CardDetailsScreen(item: item))),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (c) => CardDetailsScreen(
+            item: item,
+            endTime: DateTime.now().add(Duration(hours: 1, minutes: 20)),
+          ),
+        ),
+      ),
       child: ClipRRect(
         borderRadius: BorderRadiusGeometry.circular(16),
         child: Stack(

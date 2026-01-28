@@ -2,6 +2,7 @@ export 'package:flutter/material.dart';
 export 'package:project1/features/onboarding/onboarding_screen.dart';
 export 'package:project1/core/theme/app_colors.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:project1/features/home/components/countdown_timer.dart';
 export 'package:gap/gap.dart';
 export 'package:google_fonts/google_fonts.dart';
 export 'package:project1/features/home/home_screen.dart';

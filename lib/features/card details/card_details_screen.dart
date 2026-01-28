@@ -1,8 +1,13 @@
 import 'package:project1/imports.dart';
 
 class CardDetailsScreen extends StatelessWidget {
-  const CardDetailsScreen({super.key, required this.item});
+  const CardDetailsScreen({
+    super.key,
+    required this.item,
+    required this.endTime,
+  });
   final ItemsModel item;
+  final DateTime endTime;
 
   @override
   Widget build(BuildContext context) {
@@ -81,9 +86,9 @@ class CardDetailsScreen extends StatelessWidget {
                         color: AppColors.text2,
                       ),
                       Gap(4),
-                      Text(
-                        "1h 23m 32s",
-                        style: GoogleFonts.spaceGrotesk(
+                      CountdownTimer(
+                        endTime: endTime,
+                        textStyle: GoogleFonts.spaceGrotesk(
                           color: AppColors.text2,
                           fontWeight: FontWeight.w400,
                           fontSize: 10,

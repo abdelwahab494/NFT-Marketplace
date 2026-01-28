@@ -1,8 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:project1/imports.dart';
 
-class TopCollectionsSection extends StatelessWidget {
-  TopCollectionsSection({super.key});
+class TopCollectionsSection extends StatefulWidget {
+  const TopCollectionsSection({super.key});
+
+  @override
+  State<TopCollectionsSection> createState() => _TopCollectionsSectionState();
+}
+
+class _TopCollectionsSectionState extends State<TopCollectionsSection> {
   final List<ItemsModel> collectionsList = [
     ItemsModel(
       image: AppImages.item(1),
@@ -45,6 +51,18 @@ class TopCollectionsSection extends StatelessWidget {
       title: "Hypebest Apes T",
     ),
   ];
+  late final List<DateTime> endTimes;
+
+  @override
+  void initState() {
+    super.initState();
+    endTimes = List.generate(
+      collectionsList.length,
+      (_) => DateTime.now().add(
+        const Duration(hours: 1, minutes: 23, seconds: 42),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +101,10 @@ class TopCollectionsSection extends StatelessWidget {
             itemCount: collectionsList.length,
             itemBuilder:
                 (BuildContext context, int itemIndex, int pageViewIndex) =>
-                    CollectionsCard(item: collectionsList[itemIndex]),
+                    CollectionsCard(
+                      item: collectionsList[itemIndex],
+                      endTime: endTimes[itemIndex],
+                    ),
             options: CarouselOptions(
               aspectRatio: 0.83,
               viewportFraction: 1,
